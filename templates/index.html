@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Model Form</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body class="w-100 h-100 d-flex justify-content-center align-items-center">
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="p-3 w-50 mt-5 border border-2 rounded-3">
+        <h2 class="mb-3 text-center">Required Information</h2>
+        <form method="post" action="/predict" class="d-flex flex-column mt-2 gap-2 justify-content-evenly">
+            <div class="w-100">
+                <h3>Personal</h3>
+            <div class="d-flex flex-wrap gap-3 gap-2 justify-content-evenly">
+                <div class="col-lg-2 col-md-6 col-sm-12">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" class="form-control form-control-sm" id="age" name="age" required>
+                </div>
+                <div class="w-auto">
+                    <label for="job" class="form-label">Job</label>
+                    <select class="form-select form-select-sm" id="job" name="job" required>
+                        <option value="admin.">Administrator</option>
+                        <option value="blue-collar">Skilled Worker</option>
+                        <option value="entrepreneur">Business Owner</option>
+                        <option value="housemaid">Housekeeper</option>
+                        <option value="management">Manager</option>
+                        <option value="retired">Retired</option>
+                        <option value="self-employed">Self-Employed</option>
+                        <option value="services">Service Worker</option>
+                        <option value="student">Student</option>
+                        <option value="technician">Technician</option>
+                        <option value="unemployed">Unemployed</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                <div class="w-auto">
+                    <label for="marital" class="form-label">Marital Status</label>
+                    <select class="form-select form-select-sm" id="marital" name="marital" required>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                    </select>
+                </div>
+                <div class="w-auto">
+                    <label for="education" class="form-label">Education</label>
+                    <select class="form-select form-select-sm" id="education" name="education" required>
+                        <option value="basic.4y">Primary Education (4 years)</option>
+                        <option value="basic.6y">Primary Education (6 years)</option>
+                        <option value="basic.9y">Secondary Education (9 years)</option>
+                        <option value="high.school">High School</option>
+                        <option value="illiterate">Illiterate</option>
+                        <option value="professional.course">Professional Course</option>
+                        <option value="university.degree">University Degree</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <label class="form-label">Default</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="default" id="defaultYes" value="yes"
+                               required>
+                        <label class="form-check-label" for="defaultYes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="default" id="defaultNo" value="no" required>
+                        <label class="form-check-label" for="defaultNo">No</label>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <label class="form-label">Housing</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="housing" id="housingYes" value="yes"
+                               required>
+                        <label class="form-check-label" for="housingYes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="housing" id="housingNo" value="no" required>
+                        <label class="form-check-label" for="housingNo">No</label>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <label class="form-label">Loan</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="loan" id="loanYes" value="yes" required>
+                        <label class="form-check-label" for="loanYes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="loan" id="loanNo" value="no" required>
+                        <label class="form-check-label" for="loanNo">No</label>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+                <h3 class="mt-4 text-start"><small class="text-muted">Optional</small></h3>
+                <div class="d-flex flex-wrap gap-2 g-2 mt-1 justify-content-evenly">
+                    <div class="col-lg-2 col-md-6 col-sm-12">
+                        <label for="campaign" class="form-label">Times Contacted</label>
+                        <input type="number" value="0" class="form-control form-control-sm" id="campaign"
+                               name="campaign">
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-12">
+                        <label for="pdays" class="form-label">Days Since Last Contact</label>
+                        <input type="number" value="999" class="form-control form-control-sm" id="pdays" name="pdays">
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-12">
+                        <label for="previous" class="form-label">Previous Contacts</label>
+                        <input type="number" value="0" class="form-control form-control-sm" id="previous"
+                               name="previous">
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-12">
+                        <label for="poutcome" class="form-label">Previous Outcome</label>
+                        <select class="form-select form-select-sm" id="poutcome" name="poutcome">
+                            <option value="failure">Failure</option>
+                            <option selected value="nonexistent">Nonexistent</option>
+                            <option value="success">Success</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="mt-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary fw-bold btn-sm">Predict</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
