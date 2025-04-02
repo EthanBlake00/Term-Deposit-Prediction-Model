@@ -1,6 +1,6 @@
-import requests
-from flask import Flask, render_template
-import joblib as jb
+from flask import Flask, render_template, request
+
+from utils.main import makePrediction
 
 app = Flask(__name__)
 
@@ -13,9 +13,32 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Load the model
-        logistic_model = jb.load("build_models/logistic_model.pkl")
+        # Get the data from the form
+        age = int(request.form.get('age'))
+        job = request.form.get('job')
+        marital = request.form.get('marital')
+        education = request.form.get('education')
+        default = request.form.get('default')
+        loan = request.form.get('loan')
+        housing = request.form.get('housing')
+        campaign = int(request.form.get('campaign'))
+        pdays = int(request.form.get('pdays'))
+        previous = int(request.form.get('previous'))
+        poutcome = request.form.get('poutcome')
+
+        # Ensure the inputs are valid
+        if not all([age, job, marital, education, default, loan, housing, poutcome]):
+            return "Error: Missing data"
+
+        # Prepare the feature array for prediction
+        x = [[age, job, marital, education, default, loan, housing, campaign, pdays, previous, poutcome]]
+        print(f"Input Features: {x}")
+        return makePrediction(x)
 
     except Exception as e:
-        print("Error loading model: " + str(e))
-        return "Error loading model: " + str(e)
+        print(f"Error: {str(e)}")
+        return f"Error: {str(e)}"
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
