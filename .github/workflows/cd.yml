@@ -3,7 +3,7 @@ name: Deploy to AWS ECR
 on:
   push:
     branches:
-      - main  # Trigger this on push to the main branch
+      - release  # Trigger this on push to the main branch
 
 jobs:
   build_and_deploy:
