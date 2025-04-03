@@ -1,25 +1,16 @@
 from flask import Flask, render_template, request
 
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from utils.main import make_prediction
 
 app = Flask(__name__)
-
-# Initialize Limiter correctly
-limiter = Limiter(get_remote_address, app=app)
-
 @app.route('/')
-@limiter.limit("10 per minute")
 def home():
     return render_template('index.html')
 
 @app.route('/about')
-@limiter.limit("10 per minute")
 def about():
     return render_template('about.html')
 @app.route('/predict', methods=['POST'])
-@limiter.limit("5 per minute")
 def predict():
     try:
         # Extract and validate inputs
