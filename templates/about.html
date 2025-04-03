@@ -2,9 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            height: 100vh;
+            background-color: #f4f7fc;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+        }
+        h2 {
+            font-weight: 600;
+            color: #333;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #555;
+        }
+        .btn-primary {
+            background-color: #4caf50;
+            border-color: #4caf50;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+        }
+        .about-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .about-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        .about-content {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center mb-4">About This App</h2>
 
+        <!-- About Section -->
+        <div class="about-section">
+            <h3 class="about-title text-center">Welcome to Our Prediction App</h3>
+            <p class="text-center">This app allows users to input personal and financial details to predict an outcome based on a machine learning model. We aim to provide accurate predictions that help users make informed decisions.</p>
+            <hr>
+            <div class="about-content">
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li>Easy-to-use form for inputting personal and financial details.</li>
+                    <li>Real-time predictions based on machine learning algorithms.</li>
+                    <li>User-friendly interface with Bootstrap-based design.</li>
+                    <li>Flexible and fast for quick predictions and analysis.</li>
+                </ul>
+
+                <p><strong>How It Works:</strong></p>
+                <p>The app collects the provided data, processes it using an AI-powered model, and provides the user with a prediction based on their inputs. This can assist users in making decisions based on historical data analysis.</p>
+
+                <p><strong>Built With:</strong></p>
+                <ul>
+                    <li>Flask - For the back-end web framework.</li>
+                    <li>Bootstrap - For responsive and modern front-end styling.</li>
+                    <li>Machine Learning - For accurate predictions based on user data.</li>
+                </ul>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="/" class="btn btn-primary">Go Back to Form</a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
