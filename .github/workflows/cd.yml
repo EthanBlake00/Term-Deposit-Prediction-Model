@@ -1,11 +1,9 @@
 name: Deploy to AWS ECR
 
 on:
-  pull_request:
+  push:
     branches:
       - release
-    types:
-      - closed
       
 jobs:
   build_and_deploy:
