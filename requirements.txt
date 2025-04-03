@@ -8,3 +8,4 @@ gunicorn==23.0.0
 Flask-Testing==0.8.1
 pytest==8.1.1
 pytest-mock==3.10.0
+flask-limiter~=3.12

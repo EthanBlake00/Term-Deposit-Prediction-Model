@@ -1,16 +1,25 @@
 from flask import Flask, render_template, request
 
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from utils.main import make_prediction
 
 app = Flask(__name__)
 
+# Initialize Limiter correctly
+limiter = Limiter(get_remote_address, app=app)
 
 @app.route('/')
+@limiter.limit("10 per minute")
 def home():
     return render_template('index.html')
 
-
+@app.route('/about')
+@limiter.limit("10 per minute")
+def about():
+    return render_template('about.html')
 @app.route('/predict', methods=['POST'])
+@limiter.limit("5 per minute")
 def predict():
     try:
         # Extract and validate inputs
@@ -42,7 +51,9 @@ def predict():
         x = [[age, job, marital, education, default, loan, housing, campaign, pdays, previous, poutcome]]
         print(f"Input Features: {x}")
 
-        return make_prediction(x)
+        prediction_result =  make_prediction(x)
+        print(f"Prediction Result: {prediction_result}")
+        return  render_template('result.html', prediction=prediction_result)
 
     except ValueError as ve:
         return f"Error: Invalid data format - {str(ve)}"
