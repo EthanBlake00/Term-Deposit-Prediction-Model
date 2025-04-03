@@ -3,11 +3,10 @@ name: CI Workflow
 on:
   push:
     branches:
-      - main
-      - 'feature/*'
+      - dev
   pull_request:
     branches:
-      - main
+      - release
 
 jobs:
   build:
@@ -24,9 +23,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
+            pip install --upgrade pip
+            pip install -r requirements.txt
+
 
       - name: Run tests
         run: |
