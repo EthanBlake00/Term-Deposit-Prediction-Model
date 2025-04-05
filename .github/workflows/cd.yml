@@ -61,8 +61,9 @@ jobs:
             sudo docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest
             # Stop and remove any existing container (ignore errors if not running)
             sudo docker stop term-deposite-ml || true
+            # Remove the existing container (ignore errors if not found)
             docker rm term-deposite-ml || true
             # Pause briefly to ensure cleanup is complete
             sleep 5
             # Run a new container with the latest image
-            sudo docker run -d --name term-deposite-ml ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest || true
+            sudo docker run -p 5000:5000 -d --name term-deposite-ml ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest || true
