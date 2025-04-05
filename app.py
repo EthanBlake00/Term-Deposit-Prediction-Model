@@ -3,13 +3,23 @@ from flask import Flask, render_template, request
 from utils.main import make_prediction
 
 app = Flask(__name__)
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
 
+
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Health check endpoint."""
+    return "Healthy", 200
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -42,15 +52,16 @@ def predict():
         x = [[age, job, marital, education, default, loan, housing, campaign, pdays, previous, poutcome]]
         print(f"Input Features: {x}")
 
-        prediction_result =  make_prediction(x)
+        prediction_result = make_prediction(x)
         print(f"Prediction Result: {prediction_result}")
-        return  render_template('result.html', prediction=prediction_result)
+        return render_template('result.html', prediction=prediction_result)
 
     except ValueError as ve:
         return f"Error: Invalid data format - {str(ve)}"
     except Exception as e:
         print(f"Error: {str(e)}")
         return f"Error: {str(e)}"
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
