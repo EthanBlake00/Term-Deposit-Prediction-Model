@@ -60,9 +60,9 @@ jobs:
             # Pull the newly pushed image from ECR
             sudo docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest
             # Stop and remove any existing container (ignore errors if not running)
-            sudo docker stop term-deposite-ml || true
+            sudo docker stop *** || true
             # Remove the existing container (ignore errors if not found)
-            sudo docker rm term-deposite-ml || true
+            sudo docker rm *** || true
             # Pause briefly to ensure cleanup is complete
             sleep 5
             # Run a new container with the latest image
