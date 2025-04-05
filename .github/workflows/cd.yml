@@ -56,7 +56,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             # Log in to ECR on the EC2 instance
-            sudo aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+            aws ecr get-login-password --region ${{secrets.AWS_REGION}} | sudo docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{secrets.AWS_REGION }}.amazonaws.com
             # Pull the newly pushed image from ECR
             sudo docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest
             # Stop and remove any existing container (ignore errors if not running)
