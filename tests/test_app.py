@@ -16,6 +16,11 @@ def test_home(client):
     assert response.status_code == 200
     assert b"index.html" not in response.data  # Template should be rendered
 
+def test_health_check(client):
+    """Test the health check endpoint."""
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert b"Healthy" in response.data
 
 def test_predict_success(client):
     """Test a successful prediction request."""
