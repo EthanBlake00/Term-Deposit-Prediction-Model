@@ -65,4 +65,4 @@ jobs:
             # Pause briefly to ensure cleanup is complete
             sleep 5
             # Run a new container with the latest image
-            sudo docker run -d --name term-deposite-ml ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:${{ github.sha }} || true
+            sudo docker run -d --name term-deposite-ml ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest || true
