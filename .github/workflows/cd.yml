@@ -62,7 +62,7 @@ jobs:
             # Stop and remove any existing container (ignore errors if not running)
             sudo docker stop term-deposite-ml || true
             # Remove the existing container (ignore errors if not found)
-            docker rm term-deposite-ml || true
+            sudo docker rm term-deposite-ml || true
             # Pause briefly to ensure cleanup is complete
             sleep 5
             # Run a new container with the latest image
